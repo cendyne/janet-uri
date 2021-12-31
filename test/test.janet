@@ -15,6 +15,16 @@
    :fragment "nose" :raw-fragment "nose"
    :raw-query "name=ferret" :query @{"name" "ferret"}}]
 
+  ["/over/there?name=ferret&flag&flag2&another=4#nose"
+  @{:path "/over/there" :raw-path "/over/there"
+   :fragment "nose" :raw-fragment "nose"
+   :raw-query "name=ferret&flag&flag2&another=4" :query @{
+     "name" "ferret"
+     "flag" true
+     "flag2" true
+     "another" "4"
+     }}]
+
   ["//"
   @{:raw-path "" :path "" :host ""}]
 

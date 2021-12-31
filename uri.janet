@@ -84,9 +84,10 @@
 
 (def- query-grammar ~{
   :main (sequence (opt :query) (not 1))
-  :query (sequence :pair (any (sequence "&" :pair)))
+  :query (sequence :pair (any (sequence "&" (choice :pair :flag))))
   :pair (sequence (cmt (capture :key) ,unescape) "=" (cmt (capture :value) ,unescape))
-  :key (any (sequence (not "=") 1))
+  :flag (sequence (cmt (capture :key) ,unescape) (constant true))
+  :key (any (sequence (not (set "=&")) 1))
   :value (any (sequence (not "&") 1))
 })
 
